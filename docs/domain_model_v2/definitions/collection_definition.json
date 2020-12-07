@@ -146,7 +146,8 @@
                     "displayProperty": "Editable",
                     "range": [
                         "Default",
-                        "Parent"
+                        "Parent",
+                        "Private"
                     ],
                     "defaultValue": "Default",
                     "renderingHints": "{ 'inputType': 'textarea', 'order': 7 }",
@@ -3034,7 +3035,8 @@
                         "Plugin",
                         "Lesson Plan Unit",
                         "Course Unit",
-                        "Textbook Unit"
+                        "Textbook Unit",
+                        "Playlist"
                     ],
                     "defaultValue": "",
                     "renderingHints": "{ 'inputType': 'text',  'order': 14 }",
