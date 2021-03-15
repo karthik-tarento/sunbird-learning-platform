@@ -24,7 +24,7 @@ public class CloudStoreManager {
 
     protected BaseStorageService awsService = StorageServiceFactory.getStorageService(new StorageConfig("aws", Platform.config.getString("aws_storage_key"), Platform.config.getString("aws_storage_secret")));
     protected BaseStorageService azureService = StorageServiceFactory.getStorageService((new StorageConfig("azure", Platform.config.getString("azure_storage_key"), Platform.config.getString("azure_storage_secret"))));
-    protected BaseStorageService cephService = StorageServiceFactory.getStorageService((new StorageConfig("cephs3", Platform.config.getString("cephs3_storage_key"), Platform.config.getString("cephs3_storage_secret"), Platform.config.getString("cephs3_storage_endpoint"))));
+    protected BaseStorageService cephService = StorageServiceFactory.getStorageService((new StorageConfig("cephs3", Platform.config.getString("cephs3_storage_key"), Platform.config.getString("cephs3_storage_secret"), Option.apply(Platform.config.getString("cephs3_storage_endpoint")))));
     private String cloudSrcBaseURL = Platform.config.getString("cloud.src.baseurl");
     private String cloudDestBaseURL = Platform.config.getString("cloud.dest.baseurl");
 
