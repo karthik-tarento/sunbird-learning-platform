@@ -33,6 +33,11 @@ private static String cloudStoreType = Platform.config.getString("cloud_storage_
 			String storageKey = Platform.config.getString("aws_storage_key");
 			String storageSecret = Platform.config.getString("aws_storage_secret");
 			storageService = StorageServiceFactory.getStorageService(new StorageConfig(cloudStoreType, storageKey, storageSecret));
+		}else if(StringUtils.equalsIgnoreCase(cloudStoreType, "cephs3")) {
+			String storageKey = Platform.config.getString("cephs3_storage_key");
+			String storageSecret = Platform.config.getString("cephs3_storage_secret");
+			String endPoint = Platform.config.getString("cephs3_storage_endpoint");
+			storageService = StorageServiceFactory.getStorageService(new StorageConfig(cloudStoreType, storageKey, storageSecret, endPoint));
 		}else {
 			throw new ServerException("ERR_INVALID_CLOUD_STORAGE", "Error while initialising cloud storage");
 		}
