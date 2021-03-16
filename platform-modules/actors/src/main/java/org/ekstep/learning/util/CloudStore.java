@@ -28,11 +28,11 @@ private static String cloudStoreType = Platform.config.getString("cloud_storage_
 		if(StringUtils.equalsIgnoreCase(cloudStoreType, "azure")) {
 			String storageKey = Platform.config.getString("azure_storage_key");
 			String storageSecret = Platform.config.getString("azure_storage_secret");
-			storageService = StorageServiceFactory.getStorageService(new StorageConfig(cloudStoreType, storageKey, storageSecret));
+			storageService = StorageServiceFactory.getStorageService(new StorageConfig(cloudStoreType, storageKey, storageSecret, Option.empty()));
 		}else if(StringUtils.equalsIgnoreCase(cloudStoreType, "aws")) {
 			String storageKey = Platform.config.getString("aws_storage_key");
 			String storageSecret = Platform.config.getString("aws_storage_secret");
-			storageService = StorageServiceFactory.getStorageService(new StorageConfig(cloudStoreType, storageKey, storageSecret));
+			storageService = StorageServiceFactory.getStorageService(new StorageConfig(cloudStoreType, storageKey, storageSecret, Option.empty()));
 		}else if(StringUtils.equalsIgnoreCase(cloudStoreType, "cephs3")) {
 			String storageKey = Platform.config.getString("cephs3_storage_key");
 			String storageSecret = Platform.config.getString("cephs3_storage_secret");
