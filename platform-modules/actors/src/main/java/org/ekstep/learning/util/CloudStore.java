@@ -52,6 +52,8 @@ private static String cloudStoreType = Platform.config.getString("cloud_storage_
 			return Platform.config.getString("azure_storage_container");
 		}else if(StringUtils.equalsIgnoreCase(cloudStoreType, "aws")) {
 			return S3PropertyReader.getProperty("aws_storage_container");
+		}else if(StringUtils.equalsIgnoreCase(cloudStoreType, "cephs3")) {
+			return S3PropertyReader.getProperty("cephs3_storage_container");
 		}else {
 			throw new ServerException("ERR_INVALID_CLOUD_STORAGE", "Error while getting container name");
 		}
