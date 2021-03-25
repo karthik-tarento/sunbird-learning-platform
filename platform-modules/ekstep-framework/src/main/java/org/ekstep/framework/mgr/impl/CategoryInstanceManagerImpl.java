@@ -35,8 +35,10 @@ public class CategoryInstanceManagerImpl extends BaseFrameworkManager implements
 		if (null == request.get("code") || StringUtils.isBlank((String) request.get("code")))
 			return ERROR("ERR_CATEGORY_INSTANCE_CODE_REQUIRED", "Unique code is mandatory for categoryInstance",
 					ResponseCode.CLIENT_ERROR);
-		validateCategoryNode((String)request.get("code"));
-		String categoryId = generateIdentifier(scopeId, (String) request.get("code"));
+		String categoryId = generateIdentifier(scopeId, (String)request.get("code"));
+		if(validateObject(categoryId)) {
+			return ERROR("ERR_CATEGORY_CODE_EXISTS", "Code already exists with given name", ResponseCode.CLIENT_ERROR);
+		}
 		if (null != categoryId)
 			request.put(CategoryEnum.identifier.name(), categoryId);
 		setRelations(scopeId, request);
@@ -102,13 +104,5 @@ public class CategoryInstanceManagerImpl extends BaseFrameworkManager implements
 			}
 		}
 		return false;
-	}
-	
-	private void validateCategoryNode(String code) {
-		Response response = getDataNode(GRAPH_ID, code);
-		if(checkError(response)) 
-			throw new ClientException(ContentErrorCodes.ERR_CATEGORY_NOT_FOUND.name() + "/"
-					+ ContentErrorCodes.ERR_CATEGORY_NOT_FOUND.name(),
-			"Given category does not belong to master category data");
 	}
 }
